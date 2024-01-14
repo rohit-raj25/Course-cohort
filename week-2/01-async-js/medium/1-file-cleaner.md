@@ -1,13 +1,12 @@
-## File cleaner
-Read a file, remove all the extra spaces and write it back to the same file.
+const fs=require('fs');
 
-For example, if the file input was
-```
-hello     world    my    name   is       raman
-```
+fs.readFile('b.txt','utf-8',(err,data)=>{
+if(err) throw err;
+const cleanData=data.replace(/\s+/g,' ');
 
-After the program runs, the output should be
+    fs.writeFile('b.txt',cleanData,(err)=>{
+        if(err) throw err;
+        console.log('file has been updated');
+    })
 
-```
-hello world my name is raman
-```
+})
